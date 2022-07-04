@@ -96,7 +96,7 @@ reg [3:0] state, next_state;
     // OUTPUT LOGIC
     always @ (state) begin
         case (state)
-            SR: begin
+            SR: begin // Reset
                 IRWE = 0;
                 MWE = 0;
                 PCWE = 0; 
@@ -264,7 +264,7 @@ reg [3:0] state, next_state;
                 RFDSel = 1'bx;
                 IDSel = 1'bx;
             end
-            S11: begin
+            S11: begin // ADDI Writeback
                 IRWE = 0;
                 MWE = 0;
                 PCWE = 0; 
