@@ -25,8 +25,8 @@ assign rd = IR[15:11];
 assign Shamt = IR[10:6];
 assign Funct = IR[5:0];
 assign Imm = IR[15:0];
+  
 assign Jaddr = 21 + {PC[31:26], IR[25:0]};
-
 assign BranchAndZero = Branch & Zero;
 assign PCEn = BranchAndZero | PCWE;
 
