@@ -8,7 +8,6 @@ wire [AWL-1:0] Opcode, Funct;
 wire [DWL-1:0] SImm;
 wire [DWL-17:0] Imm;
 wire [AWL-5:0] ALUIn2Sel, PCSel;
-wire PCEn, MtoRFSel, RFDSel, ALUIn1Sel, IDSel, IRWE, MWE, PCWE, Branch, RFWE;
 wire [DWL-1:0] PCp, PC, Addr;
 wire [DWL-1:0] a, b, A, B, MRD, IR, DR;
 wire [AWL-2:0] rs, rd, rt, rtd;
@@ -16,8 +15,8 @@ wire [DWL-1:0] ALUOutR;
 wire [DWL-1:0] ALUIn1, ALUIn2, ALUOut;
 wire [AWL-2:0] Shamt;
 wire [AWL-3:0] ALUSel;
-wire Zero;
 wire [DWL-1:0] Jaddr;
+wire Zero, PCEn, MtoRFSel, RFDSel, ALUIn1Sel, IDSel, IRWE, MWE, PCWE, Branch, RFWE;
 
 assign Opcode = IR[31:26];
 assign rs = IR[25:21];
@@ -50,7 +49,7 @@ Memory              #(.AWL(AWL), .DWL(DWL), .DEPTH(DEPTH))
 InstructionRegister #(.AWL(AWL), .DWL(DWL), .DEPTH(DEPTH))
                     UUT4 (.CLK(CLK), .EN(IRWE), .D(MRD), .Q(IR));
               
-Register        #(.AWL(AWL), .DWL(DWL), .DEPTH(DEPTH))
+Register            #(.AWL(AWL), .DWL(DWL), .DEPTH(DEPTH))
                     UUT5 (.CLK(CLK),  .D(MRD), .Q(DR));
                
 Mux_2x1             #(.AWL(AWL-2), .DWL(DWL-27), .DEPTH(DEPTH))
