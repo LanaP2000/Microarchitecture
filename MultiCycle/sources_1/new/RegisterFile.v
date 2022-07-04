@@ -23,6 +23,6 @@ integer i;
     end
     
     assign RFRD1 = Registers[RFRA1]; 
-	assign RFRD2 = Registers[RFRA2];
+    assign RFRD2 = Registers[RFRA2];
                       
 endmodule
